@@ -6,19 +6,18 @@ const itemRoutes = require('./routes/itemRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const HOST = process.env.HOST || 'localhost';
 
 app.use(cors());
 app.use(express.json());
 
 connectDB()
     .then(() => {
-        app.listen(PORT, HOST, () => {
-            console.log(`Server running at: https://${HOST}:${PORT}/api/v1/`);
+        app.listen(PORT, () => {
+            console.log(`Server running!`);
         });
     })
     .catch((error) => {
-        console.error('❌ Server failed to start:', error);
+        console.error('Server failed to start:', error);
         process.exit(1);
     });
 
